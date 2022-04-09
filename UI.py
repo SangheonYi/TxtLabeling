@@ -1,27 +1,23 @@
+from asyncio.windows_events import NULL
+from msilib import sequence
 import tkinter as tk
+import line_ui
 import menu
+from constants import *
 
-from tkinter import filedialog
+sequence = NULL
 
-def onOpen():
-    print(filedialog.askopenfilename(initialdir = "/",title = "Open file",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
-
-def onSave():
-    print(filedialog.asksaveasfilename(initialdir = "/",title = "Save as",filetypes = (("Python files","*.py;*.pyw"),("All files","*.*"))))
+files = {
+    ORIGIN : NULL,
+    TOKENIZED : NULL,
+    LABEL : NULL,
+}
 
 app = tk.Tk()
-app.geometry('300x200')
+app.geometry('600x400')
 app.title("Basic Menu Bar")
 
-menubar = tk.Menu(app, tearoff=0)
-
-filemenu = tk.Menu(menubar, tearoff=0)
-filemenu.add_command(label="Open", command=onOpen)
-filemenu.add_command(label="Save", command=onSave)
-filemenu.add_command(label="Exit", command=app.quit)
-
-menubar.add_cascade(label="File", menu=filemenu)
-
-app.config(menu=menubar)
+line_ui.label_init(app)
+menu.menu_init(app, files)
 
 app.mainloop()
