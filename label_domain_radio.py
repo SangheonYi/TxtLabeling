@@ -2,8 +2,6 @@ import tkinter as tk
 from constants import LABEL_DOMAIN_ROW, ORIGIN, TOKENIZED, LABEL
 
 def init_radio(txt_labeling):
-    ##Radiobutton
-
     for i, label in enumerate(txt_labeling.files[LABEL].label_domain):
         radio_button = tk.Radiobutton(txt_labeling.app, text=label, value=label, variable=txt_labeling.picked_label)
         radio_button.grid(row=LABEL_DOMAIN_ROW,column=i)

@@ -1,3 +1,5 @@
+from constants import ORIGIN, TOKENIZED
+
 class DataTSV():
     def __init__(self, file):
         self.current = 0
@@ -16,11 +18,14 @@ class DataTSV():
             return f"{token_part}\t{label_part}"
         return 'end of file'
 
-    def get_mixed_list(self):
+    def get_mixed_list(self, key):
         mixed = []
         if -1 < self.current < len(self.tokens_list):
             for i, token in enumerate(self.tokens_list[self.current]):
-                mixed.append(token + ' ' + self.labels_list[self.current][i])
+                if key == ORIGIN:
+                    mixed.append(self.labels_list[self.current][i] + '\n' + token)
+                elif key == TOKENIZED:
+                    mixed.append(token + '\n' + self.labels_list[self.current][i])
             return mixed
         return 'end of file'
 

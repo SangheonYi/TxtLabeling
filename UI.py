@@ -11,6 +11,7 @@ class TXTLabeling():
         self.app = app
         self.sequence = NULL
         self.picked_label = tk.StringVar()
+        self.current_progress = tk.StringVar()
         self.label_domain = []
         self.files = {
             ORIGIN : NULL,
@@ -18,8 +19,9 @@ class TXTLabeling():
             LABEL : NULL,
         }
         self.labels = {
-            ORIGIN : NULL,
-            TOKENIZED : NULL,
+            INDEX : NULL,
+            ORIGIN : [],
+            TOKENIZED : [],
         }
         self.texts = {
             ORIGIN : tk.StringVar(),
@@ -33,8 +35,6 @@ app = txt_labeling.app
 app.geometry('600x400')
 app.title("Basic Menu Bar")
 
-line_ui.init_label(txt_labeling, ORIGIN)
-line_ui.init_label(txt_labeling, TOKENIZED)
 buttons.button_init(txt_labeling)
 menu.menu_init(txt_labeling)
 
