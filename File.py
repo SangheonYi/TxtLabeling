@@ -37,6 +37,12 @@ class DataTSV():
             self.current = index
         return self.get_line()
 
+    def set_label(self, index, new_label):
+        if -1 < self.current < len(self.tokens_list):
+            labels = self.labels_list[self.current]
+            if -1 < index < len(labels):
+                self.labels_list[self.current][index] = new_label
+
 class LabelFile():
     def __init__(self, file):
         self.label_domain = []
