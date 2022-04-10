@@ -7,10 +7,11 @@ def label_click(event,txt_labeling):
     name = str(event.widget)
     index = int(name.split('-')[-1])
     current_token = event.widget['text'].split()[0]
-    txt_labeling.files[TOKENIZED].set_label(index, txt_labeling.picked_label)
-    event.widget['text'] = current_token + ' ' + txt_labeling.picked_label
+    txt_labeling.files[TOKENIZED].set_label(index, txt_labeling.picked_label.get())
+    event.widget['text'] = current_token + ' ' + txt_labeling.picked_label.get()
     event.widget['bg'] = 'green'
     print(f'label clicked: {event}')
+    print(txt_labeling.files[TOKENIZED].get_line())
 
 def init_label(txt_labeling, key):
     txt_labeling.labels[key] = [tk.Label(txt_labeling.app, textvariable=txt_labeling.texts[key])]

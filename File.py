@@ -47,7 +47,7 @@ class LabelFile():
     def __init__(self, file):
         self.label_domain = []
         for line in file:
-            self.label_domain.append(line)
+            self.label_domain.append(line.strip())
 
     def get_label(self, index):
         return self.label_domain[index]

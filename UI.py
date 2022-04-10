@@ -10,7 +10,8 @@ class TXTLabeling():
     def __init__(self, app) -> None:
         self.app = app
         self.sequence = NULL
-        self.picked_label = 'O'
+        self.picked_label = tk.StringVar()
+        self.label_domain = []
         self.files = {
             ORIGIN : NULL,
             TOKENIZED : NULL,
@@ -19,7 +20,6 @@ class TXTLabeling():
         self.labels = {
             ORIGIN : NULL,
             TOKENIZED : NULL,
-            LABEL : NULL,
         }
         self.texts = {
             ORIGIN : tk.StringVar(),
