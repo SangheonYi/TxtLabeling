@@ -1,5 +1,6 @@
 class DataTSV():
     def __init__(self, file):
+        self.current = 0
         self.tokens_list = []
         self.labels_list = []
         for line in file:
@@ -8,10 +9,25 @@ class DataTSV():
                 self.tokens_list.append(tokens.split())
                 self.labels_list.append(labels.split())
 
-    def get_line(self, index):
-        token_part = ' '.join(self.tokens_list[index])
-        label_part = ' '.join(self.labels_list[index])
-        return f"{token_part}\t{label_part}"
+    def get_line(self):
+        if self.current < len(self.tokens_list):
+            token_part = ' '.join(self.tokens_list[self.current])
+            label_part = ' '.join(self.labels_list[self.current])
+            return f"{token_part}\t{label_part}"
+        return 'end of file'
+
+    def next(self):
+        if  self.current < len(self.tokens_list):
+            self.current += 1
+
+    def prev(self):
+        if self.current > 0:
+            self.current -= 1
+
+    def go_ith_line(self, index):
+        if -1 < index < len(self.tokens_list):
+            self.current = index
+        return self.get_line()
 
 class LabelFile():
     def __init__(self, file):

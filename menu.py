@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
 import File
-from functools import partial
 from constants import *
 
 def open_datafile(files, key):
@@ -10,9 +9,9 @@ def open_datafile(files, key):
     if file_path:
         with open(file_path, "r", encoding="utf-8") as file:
             files[key] = File.DataTSV(file)
-            print(files[key].get_line(0))
+            print(files[key].get_line())
 
-def open_labelfile(files, key):
+def open_labelfile(event, files, key):
     file_path = filedialog.askopenfilename(initialdir = ".",title = "Open file",filetypes = (("label file","*.txt"),("All files","*.*")))
     print(file_path)
     if file_path:
@@ -27,9 +26,9 @@ def menu_init(app, files):
     menubar = tk.Menu(app, tearoff=0)
 
     filemenu = tk.Menu(menubar, tearoff=0)
-    filemenu.add_command(label=OPEN_ORIGIN_FILE, command=partial(open_datafile, files=files, key=ORIGIN))
-    filemenu.add_command(label=OPEN_TOKEN_FILE, command=partial(open_datafile, files=files, key=TOKENIZED))
-    filemenu.add_command(label=OPEN_LABEL_FILE, command=partial(open_labelfile, files=files, key=LABEL))
+    filemenu.add_command(label=OPEN_ORIGIN_FILE, command=lambda : open_datafile( files=files, key=ORIGIN))
+    filemenu.add_command(label=OPEN_TOKEN_FILE, command=lambda : open_datafile( files=files, key=TOKENIZED))
+    filemenu.add_command(label=OPEN_LABEL_FILE, command=lambda : open_labelfile( files=files, key=LABEL))
     filemenu.add_command(label="Save", command=onSave)
     filemenu.add_command(label="Exit", command=app.quit)
 
