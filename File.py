@@ -10,7 +10,17 @@ class DataTSV():
                 self.labels_list.append(labels.split())
 
     def get_line(self):
-        if self.current < len(self.tokens_list):
+        if -1 < self.current < len(self.tokens_list):
+            token_part = ' '.join(self.tokens_list[self.current])
+            label_part = ' '.join(self.labels_list[self.current])
+            return f"{token_part}\t{label_part}"
+        return 'end of file'
+
+    def get_mixed_line(self):
+        mixed = []
+        if -1 < self.current < len(self.tokens_list):
+            for i, token in enumerate(self.tokens_list[self.current]):
+                mixed.append(token + ' ' + self.labels_list[self.current][i])
             token_part = ' '.join(self.tokens_list[self.current])
             label_part = ' '.join(self.labels_list[self.current])
             return f"{token_part}\t{label_part}"

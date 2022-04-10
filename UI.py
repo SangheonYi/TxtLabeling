@@ -31,10 +31,9 @@ app = txt_labeling.app
 app.geometry('600x400')
 app.title("Basic Menu Bar")
 
-line_ui.update_labels(app, txt_labeling)
-line_ui.init_label(app, txt_labeling, ORIGIN)
-line_ui.init_label(app, txt_labeling, TOKENIZED)
-buttons.button_init(app, txt_labeling)
-menu.menu_init(app, txt_labeling.files)
+line_ui.init_label(txt_labeling, ORIGIN)
+line_ui.init_label(txt_labeling, TOKENIZED)
+buttons.button_init(txt_labeling)
+menu.menu_init(txt_labeling)
 
 app.mainloop()
