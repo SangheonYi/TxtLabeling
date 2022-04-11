@@ -31,7 +31,7 @@ def on_save(event, txt_labeling):
         with open(file_path + '.tsv', "w", encoding="utf-8") as save_file:
             edited_file = txt_labeling.files[TOKENIZED]
             for i, e in enumerate(edited_file.tokens_list):
-                save_file.write(edited_file.go_ith_line(i) + '\n')
+                save_file.write(edited_file.get_ith_line(i) + '\n')
 
 
 def menu_init(txt_labeling):

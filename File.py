@@ -18,6 +18,13 @@ class DataTSV():
             return f"{token_part}\t{label_part}"
         return 'end of file'
 
+    def get_ith_line(self, index):
+        if -1 < index < len(self.tokens_list):
+            token_part = ' '.join(self.tokens_list[index])
+            label_part = ' '.join(self.labels_list[index])
+            return f"{token_part}\t{label_part}"
+        return 'end of file'
+
     def get_mixed_list(self, key):
         mixed = []
         if -1 < self.current < len(self.tokens_list):
