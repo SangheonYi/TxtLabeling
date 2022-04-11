@@ -5,7 +5,7 @@ from constants import ORIGIN, TOKENIZED, INDEX
 def update_index(txt_labeling):
     if txt_labeling.labels[INDEX] == NULL:
         index_label = tk.Label(txt_labeling.app, textvariable=txt_labeling.current_progress)
-        index_label.grid(row=11, column=0)
+        index_label.grid(row=100, column=0)
         txt_labeling.labels[INDEX] = index_label
     current = txt_labeling.files[TOKENIZED].current
     total = len(txt_labeling.files[TOKENIZED].tokens_list)
