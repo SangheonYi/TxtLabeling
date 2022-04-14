@@ -1,9 +1,9 @@
 from asyncio.windows_events import NULL
 from msilib import sequence
 import tkinter as tk
-import line_ui
 import menu
 import buttons
+import Entry
 from constants import *
 
 class TXTLabeling():
@@ -12,6 +12,7 @@ class TXTLabeling():
         self.sequence = NULL
         self.picked_label = tk.StringVar()
         self.current_progress = tk.StringVar()
+        self.entry_index = tk.StringVar()
         self.label_domain = []
         self.files = {
             ORIGIN : NULL,
@@ -37,5 +38,7 @@ app.title("Basic Menu Bar")
 
 buttons.button_init(txt_labeling)
 menu.menu_init(txt_labeling)
+Entry.init_entry(txt_labeling)
 
+app.bind('<Return>', lambda event: Entry.update_idx(event, txt_labeling))
 app.mainloop()
