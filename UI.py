@@ -14,6 +14,7 @@ class TXTLabeling():
         self.current_progress = tk.StringVar()
         self.entry_index = tk.StringVar()
         self.label_domain = []
+        self.color_dict = {}
         self.files = {
             ORIGIN : NULL,
             TOKENIZED : NULL,

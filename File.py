@@ -29,10 +29,7 @@ class DataTSV():
         mixed = []
         if -1 < self.current < len(self.tokens_list):
             for i, token in enumerate(self.tokens_list[self.current]):
-                if key == ORIGIN:
-                    mixed.append(self.labels_list[self.current][i] + '\n' + token)
-                elif key == TOKENIZED:
-                    mixed.append(token + '\n' + self.labels_list[self.current][i])
+                mixed.append((self.labels_list[self.current][i], token))
             return mixed
         return 'end of file'
 
