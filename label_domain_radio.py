@@ -10,6 +10,6 @@ def init_radio(txt_labeling):
         radio_button = tk.Radiobutton(txt_labeling.app, text=label, value=label, variable=txt_labeling.picked_label)
         if not (label == 'O' or label == 'UNK'):
             txt_labeling.color_dict[label] = rgb_to_hex(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-        radio_button.config(bg=txt_labeling.color_dict[label])
+            radio_button.config(bg=txt_labeling.color_dict[label])
         radio_button.grid(row=LABEL_DOMAIN_ROW + (i // 10),column=i % 10)
         txt_labeling.label_domain.append(radio_button)
