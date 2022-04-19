@@ -2,7 +2,7 @@ import tkinter as tk
 import menu
 import buttons
 import Entry
-import TXTLabeling
+from TXTLabeling import TXTLabeling
 
 txt_labeling = TXTLabeling(tk.Tk())
 app = txt_labeling.app

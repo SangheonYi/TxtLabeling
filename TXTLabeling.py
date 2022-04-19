@@ -11,6 +11,7 @@ class TXTLabeling():
         self.entry_index = tk.StringVar()
         self.label_domain = []
         self.color_dict = {}
+
         self.files = {
             ORIGIN : NULL,
             TOKENIZED : NULL,
@@ -21,9 +22,3 @@ class TXTLabeling():
             ORIGIN : [],
             TOKENIZED : [],
         }
-        self.texts = {
-            ORIGIN : tk.StringVar(),
-            TOKENIZED : tk.StringVar(),
-        }
-        self.texts[ORIGIN].set('Hello world')
-        self.texts[TOKENIZED].set('Hello tokenized_line')
