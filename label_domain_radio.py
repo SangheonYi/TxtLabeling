@@ -13,8 +13,8 @@ def init_radio(txt_labeling):
             red, green, blue = 255, 255, 255
             offset_base = 255 // half_size
             offset = i // 6
-            print(offset * offset_base)
             i_mod = i % 6
+            
             if  i_mod < 2:
                 red = offset * offset_base
                 green = 0

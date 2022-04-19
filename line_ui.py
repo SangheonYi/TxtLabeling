@@ -34,6 +34,8 @@ def update_label(txt_labeling, key):
 
         if key == TOKENIZED:
             text = token_text + text + token_label
+            if token_label in txt_labeling.selected_label_listbox:
+                text += '\n👀'
         elif key == ORIGIN:
             text = token_label + text + token_text
         label = tk.Label(txt_labeling.app, name=key + '-'+ str(i), text=text)
