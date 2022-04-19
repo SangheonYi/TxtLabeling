@@ -6,7 +6,7 @@ from TXTLabeling import TXTLabeling
 
 txt_labeling = TXTLabeling(tk.Tk())
 app = txt_labeling.app
-app.geometry('600x400')
+app.geometry('1200x400')
 app.title("Basic Menu Bar")
 
 buttons.button_init(txt_labeling)

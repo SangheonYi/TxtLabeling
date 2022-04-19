@@ -1,4 +1,6 @@
 from constants import ORIGIN, TOKENIZED
+def is_in_selected(selected_labels, file_labels):
+    return set(selected_labels).intersection(set(file_labels))
 
 class DataTSV():
     def __init__(self, file):
@@ -33,13 +35,17 @@ class DataTSV():
             return mixed
         return 'end of file'
 
-    def next(self):
-        if  self.current < len(self.tokens_list):
+    def next(self, selected_list):
+        while self.current < len(self.tokens_list):
             self.current += 1
+            if not selected_list or is_in_selected(selected_list, self.labels_list[self.current]):
+                break
 
-    def prev(self):
-        if self.current > 0:
+    def prev(self, selected_list):
+        while self.current > 0:
             self.current -= 1
+            if not selected_list or is_in_selected(selected_list, self.labels_list[self.current]):
+                break
 
     def go_ith_line(self, index):
         if -1 < index < len(self.tokens_list):

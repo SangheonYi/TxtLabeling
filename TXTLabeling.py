@@ -5,18 +5,25 @@ import tkinter as tk
 class TXTLabeling():
     def __init__(self, app) -> None:
         self.app = app
-        self.sequence = NULL
         self.picked_label = tk.StringVar()
+
+        # index to explore
         self.current_progress = tk.StringVar()
         self.entry_index = tk.StringVar()
-        self.label_domain = []
-        self.color_dict = {}
 
+        # label filter
+        self.selected_label_listbox = []
+
+        # opend files
         self.files = {
             ORIGIN : NULL,
             TOKENIZED : NULL,
             LABEL : NULL,
         }
+        self.label_domain = []
+        self.color_dict = {}
+
+        # Label UI list
         self.labels = {
             INDEX : NULL,
             ORIGIN : [],
