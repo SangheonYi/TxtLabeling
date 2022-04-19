@@ -20,3 +20,6 @@ Open label file by 'File' -> 'Open Label file'
 Select the type of label you want to tag.  
 If you have selected a label, click the Tokenized file's token to which you want to assign the selected label.  
 You can't tag Origin file.  
+
+## Label filter
+You can filter labels by selecting labels in listbox
