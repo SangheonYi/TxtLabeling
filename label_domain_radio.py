@@ -10,19 +10,20 @@ def init_radio(txt_labeling):
     for i, label in enumerate(txt_labeling.files[LABEL].label_domain):
         radio_button = tk.Radiobutton(txt_labeling.app, text=label, value=label, variable=txt_labeling.picked_label)
         if not (label == 'O' or label == 'UNK'):
-            red, green, blue = 255, 255, 255
+            red, green, blue = 214, 214, 214
             offset_base = 255 // half_size
             offset = i // 6
             i_mod = i % 6
+            color_salt = 75
             
             if  i_mod < 2:
                 red = offset * offset_base
-                green = 0
+                green = color_salt
             elif 1 < i_mod < 4:
                 green = offset * offset_base
-                blue = 0
+                blue = color_salt
             else:
-                red = 0
+                red = color_salt
                 blue = offset * offset_base
             if label[-1] == 'I':
                 red = red // 2 + 30
