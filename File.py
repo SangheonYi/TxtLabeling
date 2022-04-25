@@ -31,7 +31,10 @@ class DataTSV():
         mixed = []
         if -1 < self.current < len(self.tokens_list):
             for i, token in enumerate(self.tokens_list[self.current]):
-                mixed.append((self.labels_list[self.current][i], token))
+                label = 'O'
+                if i < len(self.labels_list[self.current]):
+                    label = self.labels_list[self.current][i]
+                mixed.append((label, token))
             return mixed
         return 'end of file'
 
