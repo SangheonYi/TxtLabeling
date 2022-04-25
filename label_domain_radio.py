@@ -6,12 +6,14 @@ def rgb_to_hex(r, g, b):
     return '#' + hex(r)[2:].zfill(2) + hex(g)[2:].zfill(2) + hex(b)[2:].zfill(2)
 
 def init_radio(txt_labeling):
-    half_size = len(txt_labeling.files[LABEL].label_domain) // 6
+    color_equlize_size = len(txt_labeling.files[LABEL].label_domain) // 6
+    if color_equlize_size == 0:
+        color_equlize_size = 1
     for i, label in enumerate(txt_labeling.files[LABEL].label_domain):
         radio_button = tk.Radiobutton(txt_labeling.app, text=label, value=label, variable=txt_labeling.picked_label)
         if not (label == 'O' or label == 'UNK'):
             red, green, blue = 214, 214, 214
-            offset_base = 255 // half_size
+            offset_base = 255 // color_equlize_size
             offset = i // 6
             i_mod = i % 6
             color_salt = 75
