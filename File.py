@@ -2,6 +2,15 @@ from constants import ORIGIN, TOKENIZED
 def is_in_selected(selected_labels, file_labels):
     return set(selected_labels).intersection(set(file_labels))
 
+def redeem_lists(tokens, labels):
+    if len(tokens) < len(labels):
+        for i in range(len(labels) - len(tokens)):
+            labels.pop()
+    elif len(tokens) > len(labels):
+        for i in range(len(tokens) - len(labels)):
+            print(i)
+            tokens.pop()
+
 class DataTSV():
     def __init__(self, file):
         self.current = 0
@@ -10,8 +19,11 @@ class DataTSV():
         for line in file:
             if '\t' in line:
                 tokens, labels = line.split('\t')
-                self.tokens_list.append(tokens.split())
-                self.labels_list.append(labels.split())
+                tokens, labels = tokens.split(), labels.split()
+                redeem_lists(tokens, labels)
+                self.tokens_list.append(tokens)
+                self.labels_list.append(labels)
+        print(self.tokens_list)
 
     def get_line(self):
         if -1 < self.current < len(self.tokens_list):
@@ -30,11 +42,8 @@ class DataTSV():
     def get_mixed_list(self, key):
         mixed = []
         if -1 < self.current < len(self.tokens_list):
-            for i, token in enumerate(self.tokens_list[self.current]):
-                label = 'O'
-                if i < len(self.labels_list[self.current]):
-                    label = self.labels_list[self.current][i]
-                mixed.append((label, token))
+            for i, token in enumerate(self.tokens_list[self.current]):                
+                mixed.append((self.labels_list[self.current][i], token))
             return mixed
         return 'end of file'
 
