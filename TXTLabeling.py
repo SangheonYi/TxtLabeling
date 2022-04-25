@@ -20,7 +20,7 @@ class TXTLabeling():
             TOKENIZED : NULL,
             LABEL : NULL,
         }
-        self.label_domain = []
+        self.label_buttons = []
         self.color_dict = {}
 
         # Label UI list
