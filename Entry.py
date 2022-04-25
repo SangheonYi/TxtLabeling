@@ -9,6 +9,8 @@ def update_idx(event, txt_labeling):
     input_idx = txt_labeling.entry_index.get()
     if input_idx.isnumeric():
         input_idx = int(input_idx) + 1
-        txt_labeling.files[ORIGIN].go_ith_line(input_idx)
-        txt_labeling.files[TOKENIZED].go_ith_line(input_idx)
+        if txt_labeling.files[ORIGIN]:
+            txt_labeling.files[ORIGIN].go_ith_line(input_idx)
+        if txt_labeling.files[TOKENIZED]:
+            txt_labeling.files[TOKENIZED].go_ith_line(input_idx)
         buttons.files_prev(event, txt_labeling)
