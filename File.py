@@ -8,8 +8,7 @@ def redeem_lists(tokens, labels):
             labels.pop()
     elif len(tokens) > len(labels):
         for i in range(len(tokens) - len(labels)):
-            print(i)
-            tokens.pop()
+            labels.append('O')
 
 class DataTSV():
     def __init__(self, file):
@@ -23,7 +22,6 @@ class DataTSV():
                 redeem_lists(tokens, labels)
                 self.tokens_list.append(tokens)
                 self.labels_list.append(labels)
-        print(self.tokens_list)
 
     def get_line(self):
         if -1 < self.current < len(self.tokens_list):
