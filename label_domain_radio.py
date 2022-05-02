@@ -1,6 +1,6 @@
 import tkinter as tk
 from Listbox import init_listbox
-from constants import LABEL_BUTTON_ROW, LABEL
+from constants import EXCLUDE_LISTBOX, INCLUDE_LISTBOX, LABEL_BUTTON_ROW, LABEL
 def rgb_to_hex(r, g, b):
     r, g, b = int(r), int(g), int(b)
     return '#' + hex(r)[2:].zfill(2) + hex(g)[2:].zfill(2) + hex(b)[2:].zfill(2)
@@ -37,4 +37,5 @@ def init_radio(txt_labeling):
             radio_button.config(bg=txt_labeling.color_dict[label])
         radio_button.grid(row=LABEL_BUTTON_ROW + (i // 10),column=i % 10)
         txt_labeling.label_buttons.append(radio_button)
-    init_listbox(txt_labeling)
+    init_listbox(txt_labeling, INCLUDE_LISTBOX, 0)
+    init_listbox(txt_labeling, EXCLUDE_LISTBOX, 1)

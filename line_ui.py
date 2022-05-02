@@ -1,6 +1,6 @@
 from asyncio.windows_events import NULL
 import tkinter as tk
-from constants import ORIGIN, TOKENIZED, INDEX
+from constants import INCLUDE_LISTBOX, ORIGIN, TOKENIZED, INDEX
 
 def update_index(txt_labeling):
     if txt_labeling.labels[INDEX] == NULL:
@@ -34,7 +34,7 @@ def update_label(txt_labeling, key):
 
         if key == TOKENIZED:
             text = token_text + text + token_label
-            if token_label in txt_labeling.selected_label_listbox:
+            if token_label in txt_labeling.label_listbox[INCLUDE_LISTBOX]:
                 text += '\n👀'
         elif key == ORIGIN:
             text = token_label + text + token_text

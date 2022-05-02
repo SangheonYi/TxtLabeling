@@ -1,6 +1,6 @@
-from constants import ORIGIN, TOKENIZED
-def is_in_selected(selected_labels, file_labels):
-    return set(selected_labels).intersection(set(file_labels))
+from constants import EXCLUDE_LISTBOX, INCLUDE_LISTBOX, ORIGIN, TOKENIZED
+def is_labels_in_labellist(labellist, file_labels):
+    return set(labellist).intersection(set(file_labels))
 
 def redeem_lists(tokens, labels):
     if len(tokens) < len(labels):
@@ -45,16 +45,28 @@ class DataTSV():
             return mixed
         return 'end of file'
 
-    def next(self, selected_list):
+    def is_target(self, include_labels, exclude_labels):
+        target_labels = self.labels_list[self.current]
+        if not (include_labels or exclude_labels):
+            return True
+        elif is_labels_in_labellist(include_labels, target_labels) and not is_labels_in_labellist(exclude_labels, target_labels):
+            return True
+        return False
+
+    def next(self, label_listbox):
+        include_labels = label_listbox[INCLUDE_LISTBOX]
+        exclude_labels = label_listbox[EXCLUDE_LISTBOX]
         while self.current < len(self.tokens_list):
             self.current += 1
-            if not selected_list or is_in_selected(selected_list, self.labels_list[self.current]):
+            if self.is_target(include_labels, exclude_labels):
                 break
 
-    def prev(self, selected_list):
+    def prev(self, label_listbox):
+        include_labels = label_listbox[INCLUDE_LISTBOX]
+        exclude_labels = label_listbox[EXCLUDE_LISTBOX]
         while self.current > 0:
             self.current -= 1
-            if not selected_list or is_in_selected(selected_list, self.labels_list[self.current]):
+            if self.is_target(include_labels, exclude_labels):
                 break
 
     def go_ith_line(self, index):

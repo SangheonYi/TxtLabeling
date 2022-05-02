@@ -12,7 +12,10 @@ class TXTLabeling():
         self.entry_index = tk.StringVar()
 
         # label filter
-        self.selected_label_listbox = []
+        self.label_listbox = {
+            INCLUDE_LISTBOX : NULL,
+            EXCLUDE_LISTBOX : NULL,
+        }
 
         # opend files
         self.files = {

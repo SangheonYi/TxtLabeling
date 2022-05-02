@@ -6,9 +6,9 @@ def file_move(event, txt_labeling, key, direction):
         file = txt_labeling.files[key]
         if file:
             if direction == MOVE_NEXT:
-                file.next(txt_labeling.selected_label_listbox)
+                file.next(txt_labeling.label_listbox)
             elif direction == MOVE_PREV:
-                file.prev(txt_labeling.selected_label_listbox)
+                file.prev(txt_labeling.label_listbox)
         line_ui.update_label(txt_labeling, key)
 
 def files_next(event, txt_labeling):

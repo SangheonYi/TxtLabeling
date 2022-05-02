@@ -8,3 +8,5 @@ OPEN_LABEL_FILE = "Open Label file"
 LABEL_BUTTON_ROW = 10
 MOVE_NEXT = 'next'
 MOVE_PREV = 'prev'
+INCLUDE_LISTBOX = "include listbox"
+EXCLUDE_LISTBOX = "exclude listbox"
