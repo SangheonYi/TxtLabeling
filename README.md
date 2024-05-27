@@ -1,7 +1,6 @@
 # TxtLabeling
-This is a gui project for labeling tsv line by line.  
+This is a gui project for ner task labeling tsv line by line.  
 
-v1.0.0 released!  
 ## Download and run
 
 dowonload UI.exe from release and run.  
